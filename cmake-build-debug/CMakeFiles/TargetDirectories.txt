@@ -1,0 +1,3 @@
+D:/record/cmake-build-debug/CMakeFiles/record.dir
+D:/record/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/record/cmake-build-debug/CMakeFiles/rebuild_cache.dir
