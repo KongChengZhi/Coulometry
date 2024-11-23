@@ -9,4 +9,4 @@ int id = 0;
 int count = 0;
 int change = 0; //ÐÞ¸Ä
 
-Record rec[];
+Record rec[QUEUE_SIZE];

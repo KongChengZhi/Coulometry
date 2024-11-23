@@ -7,7 +7,7 @@
 
 int readRecordFile(Record* rec) {
 
-	FILE* fp = fopen("D:/record/record.txt", "r");
+	FILE* fp = fopen("D:\\record\\record.txt", "r");
 	if (!fp) {
 		perror("文件打开失败");
 		return -1;
@@ -21,9 +21,9 @@ int readRecordFile(Record* rec) {
 					&rec[i].peopleNum, &rec[i].year,
 					&rec[i].month, &rec[i].peakUsage,
 					&rec[i].valleyUsage, &rec[i].totalUsage,
-					&rec[i].price, &rec[i].isJoined,
-					&rec[i].isListed, &rec[i].isCounted) == 13) {
+					&rec[i].price, &rec[i].isJoined,&rec[i].isListed,&rec[i].isCounted) == 13) {
 		i++;
+
 					}
 
 	fclose(fp);
@@ -39,13 +39,24 @@ void saveFile(Record* rec, int count)
 	}
 
 	for (int i = 0; i < count; ++i) {
-		fprintf(fp, "%d %s %s %d %d %d %d %d %.2lf %.2lf %.2lf %.2lf %d\n",
-			rec[i].id, rec[i].name, rec[i].community,
-			rec[i].year, rec[i].month, rec[i].peopleNum,
-			rec[i].isJoined, rec[i].isListed,
-			rec[i].peakUsage, rec[i].valleyUsage,
-			rec[i].totalUsage, rec[i].price,
-			rec[i].isCounted);
+		printf( "%d %s %s %d %d %d %lf %lf %lf %lf %d %d %d \n",
+					rec[i].id, rec[i].name,
+					rec[i].community,
+					rec[i].peopleNum, rec[i].year,
+					rec[i].month, rec[i].peakUsage,
+					rec[i].valleyUsage, rec[i].totalUsage,
+					rec[i].price, rec[i].isJoined,rec[i].isListed,rec[i].isCounted);
+	}
+
+
+	for (int i = 0; i < count; ++i) {
+		fprintf(fp, "%d %s %s %d %d %d %lf %lf %lf %lf %d %d %d \n",
+					rec[i].id, rec[i].name,
+					rec[i].community,
+					rec[i].peopleNum, rec[i].year,
+					rec[i].month, rec[i].peakUsage,
+					rec[i].valleyUsage, rec[i].totalUsage,
+					rec[i].price, rec[i].isJoined,rec[i].isListed,rec[i].isCounted);
 	}
 
 	fclose(fp);

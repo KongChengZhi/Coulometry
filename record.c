@@ -163,7 +163,7 @@ void displayCommunityByDate() {
     printf("           输入小区名：");
     scanf_s("%s", com, MAX_COMMUNITY_LEN);
     change = findRecordByCommunityName(rec, com);
-    if (change) {
+    if (change != -1) {
         printf("           按日期显示小区电费记录信息\n");
         printf("           1为已扩容，0为未扩容\n");
         printf("           小区名：是否扩容：\n");
@@ -416,7 +416,7 @@ void addRecord() {
         }
     } while (id < MIN_RECORDS || id >= MAX_RECORDS+1);
 	change = findRecordByID(rec, rec[count].id);     /*寻找是否已有相同的户号*/
-	if (change)
+	if (change != -1)
 	{
 		printf("            已有该用户信息：\n");             /*输出相同的信息*/
 		displaySameTitle();
@@ -433,6 +433,7 @@ void addRecord() {
 	}
 	else
 	{
+	    rec[count].id = id;
 		printf("            户名：");
 		scanf_s("%s", rec[count].name, QUEUE_SIZE);
 		printf("            小区：");
@@ -476,6 +477,7 @@ void addRecord() {
 		}
 	}
 	printf("           成功添加住户！\n\n");
+    count++; //加一，方便统计
 }
 /*输入年月峰谷信息*/
 void addTOU() {
